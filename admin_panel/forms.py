@@ -54,7 +54,7 @@ class TaskForm(forms.ModelForm):
 
         # Add placeholder/help text for due_date field
         self.fields["due_date"].widget.attrs.update({
-            "placeholder": "YYYY-MM-DD (e.g. 2025-09-30)",
+            "placeholder": "YYYY-MM-DD",
             "type": "date"  # browsers show date picker if supported
         })
         self.fields["due_date"].help_text = "Enter date in format YYYY-MM-DD."
