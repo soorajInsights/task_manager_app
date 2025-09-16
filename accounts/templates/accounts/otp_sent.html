@@ -1,0 +1,5 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<p>If the email is registered, a one-time passcode has been sent. Check your inbox.</p>
+<a class="btn btn-secondary" href="{% url 'otp_verify' %}">Enter Code</a>
+{% endblock %}

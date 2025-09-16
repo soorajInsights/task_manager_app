@@ -1,0 +1,33 @@
+{% extends "admin_panel/base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h3>Dashboard</h3>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6>Admins</h6>
+      <h3>{{ counts.total_admins }}</h3>
+      <a href="{% url 'admin_panel:admins_list' %}" class="btn btn-sm btn-outline-primary mt-2">View list</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6>SuperAdmins</h6>
+      <h3>{{ counts.total_superadmins }}</h3>
+      <a href="{% url 'admin_panel:admins_list' %}" class="btn btn-sm btn-outline-primary mt-2">View list</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6>Manage Tasks</h6>
+      <a href="{% url 'admin_panel:tasks_list' %}">Manage Tasks</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6>Manage Users</h6>
+      <a href="{% url 'admin_panel:list_users' %}" class="btn btn-secondary">Manage Users</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

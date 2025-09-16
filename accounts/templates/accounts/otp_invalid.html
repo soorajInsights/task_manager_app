@@ -1,0 +1,5 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<p>The code you entered is invalid or expired. Please request a new one.</p>
+<a class="btn btn-secondary" href="{% url 'otp_request' %}">Request New Code</a>
+{% endblock %}

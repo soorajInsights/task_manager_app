@@ -1,0 +1,27 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<div class="container" style="max-width: 700px; margin-top: 20px;">
+  <h2>{{ task.title }}</h2>
+  <p><strong>Assigned To:</strong> {{ task.assigned_to.username }}</p>
+  <p><strong>Status:</strong> {{ task.status }}</p>
+  <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+
+  <p><strong>Description:</strong></p>
+  <div class="border p-2 mb-3">
+    {{ task.description|linebreaks }}
+  </div>
+
+  {% if task.completion_report %}
+    <p><strong>Completion Report:</strong></p>
+    <div class="border p-2 mb-3">
+      {{ task.completion_report|linebreaks }}
+    </div>
+  {% endif %}
+
+  {% if task.worked_hours %}
+    <p><strong>Worked Hours:</strong> {{ task.worked_hours }}</p>
+  {% endif %}
+
+  <a href="{% url 'admin_panel:tasks_list' %}" class="btn btn-secondary mt-3">Back to Task List</a>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<div class="container" style="max-width: 500px; margin-top: 40px;">
+  <h2 class="mb-4 text-center">Request One-Time Passcode</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} mb-3">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Send Code</button>
+  </form>
+</div>
+{% endblock %}

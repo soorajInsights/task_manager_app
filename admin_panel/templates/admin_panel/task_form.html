@@ -1,0 +1,61 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<div class="container" style="max-width: 600px; margin-top: 20px;">
+  <h2 class="mb-4">Create Task</h2>
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label>Title</label>
+      {{ form.title }}
+      {{ form.title.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      {{ form.description }}
+      {{ form.description.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Assign To</label>
+      {{ form.assigned_to }}
+      {{ form.assigned_to.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Due Date</label>
+      {{ form.due_date }}
+      {% if form.due_date.help_text %}
+        <small class="form-text text-muted">{{ form.due_date.help_text }}</small>
+      {% endif %}
+      {{ form.due_date.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Status</label>
+      {{ form.status }}
+      {{ form.status.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Completion Report</label>
+      {{ form.completion_report }}
+      {{ form.completion_report.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label>Worked Hours</label>
+      {{ form.worked_hours }}
+      {{ form.worked_hours.errors }}
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Save Task</button>
+  </form>
+</div>
+{% endblock %}

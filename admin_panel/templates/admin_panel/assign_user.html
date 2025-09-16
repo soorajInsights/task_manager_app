@@ -1,0 +1,16 @@
+{% extends "admin_panel/base.html" %}
+
+{% block content %}
+<h2>Assign {{ user.username }} to an Admin</h2>
+
+<form method="post" class="mt-3">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.manager.label_tag }}
+        {{ form.manager }}
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Save</button>
+    <a href="{% url 'admin_panel:list_users' %}" class="btn btn-secondary mt-2">Cancel</a>
+</form>
+{% endblock %}

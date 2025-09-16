@@ -1,0 +1,45 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<h2>Tasks</h2>
+
+<!-- Optional filter buttons at the top -->
+<div class="mb-3">
+  <a href="?status=" class="btn btn-secondary btn-sm">All</a>
+    <a href="?status=IN_PROGRESS" class="btn btn-warning btn-sm">In Progress</a>
+    <a href="?status=TODO" class="btn btn-danger btn-sm">Not Completed</a>
+    <a href="?status=COMPLETED" class="btn btn-success btn-sm">Completed</a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Assigned To</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.title }}</td>
+      <td>{{ task.assigned_to.username }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.due_date }}</td>
+      <td>
+        {% if task.description %}
+          {{ task.description|truncatewords:8 }}
+        {% else %}
+          -
+        {% endif %}
+      </td>
+      <td>
+        <a href="{% url 'admin_panel:task_report' task.id %}" class="btn btn-sm btn-info">View</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
